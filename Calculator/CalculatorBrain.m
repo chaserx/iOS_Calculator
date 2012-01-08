@@ -40,13 +40,6 @@
     return [operandObject doubleValue];
 }
 
-//- (void)clearStack
-//{   
-    // check that there is an object in the stack. if so, then remove all objects
-//    NSNumber *operandObject = [self.operandStack lastObject];
-//    if (operandObject) [self.operandStack removeAllObjects];
-//    
-//}
 
 - (double)performOperation:(NSString *)operation
 {
@@ -65,6 +58,9 @@
         result = 3.1415926535897932384626433832795028841971693993751058209749;
     } else if ([@"SQRT" isEqualToString:operation]){
         result = sqrt([self popOperand]);
+    } else if ([@"AC" isEqualToString:operation]){
+        result = 0;
+        [self.operandStack removeAllObjects];        
     }
     
     [self pushOperand:result];
