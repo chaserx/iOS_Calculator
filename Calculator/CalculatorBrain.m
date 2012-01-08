@@ -40,6 +40,14 @@
     return [operandObject doubleValue];
 }
 
+//- (void)clearStack
+//{   
+    // check that there is an object in the stack. if so, then remove all objects
+//    NSNumber *operandObject = [self.operandStack lastObject];
+//    if (operandObject) [self.operandStack removeAllObjects];
+//    
+//}
+
 - (double)performOperation:(NSString *)operation
 {
     double result = 0;

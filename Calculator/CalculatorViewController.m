@@ -60,12 +60,14 @@
 }
 
 
-- (IBAction)clearAll:(UIButton *)sender
+- (IBAction)resetDisplay
 {
+    self.userIsInTheMiddleOfEnteringANumber = NO;
+    self.display.text = [NSString stringWithString:@"0"];
+
+    // this resets the display to 0, but doesn't clear the array
     
 }
-
-
 
 
 

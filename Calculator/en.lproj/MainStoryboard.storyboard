@@ -302,7 +302,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="clearAll:" destination="2" eventType="touchUpInside" id="bnQ-hE-kaE"/>
+                                    <action selector="resetDisplay" destination="2" eventType="touchUpInside" id="tlc-BU-KJa"/>
                                 </connections>
                             </button>
                         </subviews>
