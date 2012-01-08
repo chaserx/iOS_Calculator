@@ -42,6 +42,8 @@
     // NSLog(@"digit pressed = %@", digit);
 }
 
+
+
 - (IBAction)enterPressed 
 {
     [self.brain pushOperand:[self.display.text doubleValue]];
@@ -58,6 +60,10 @@
 }
 
 
+- (IBAction)clearAll:(UIButton *)sender
+{
+    
+}
 
 
 
