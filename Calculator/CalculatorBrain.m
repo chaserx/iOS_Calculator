@@ -17,6 +17,7 @@
 
 @synthesize operandStack = _operandStack;
 
+
 - (NSMutableArray *)operandStack
 {
     if (_operandStack == nil) _operandStack = [[NSMutableArray alloc] init];
@@ -31,6 +32,7 @@
 - (void)pushOperand:(double)operand
 {
     [self.operandStack addObject:[NSNumber numberWithDouble:operand]];
+    
 }
 
 - (double)popOperand
@@ -45,6 +47,7 @@
 {
     double result = 0;
     // calc result
+    // sin and cos are in Rad NOT Deg
     
     if([operation isEqualToString:@"+"]){
         result = [self popOperand] + [self popOperand];
@@ -60,9 +63,13 @@
         result = 3.1415926535897932384626433832795028841971693993751058209749;
     } else if ([@"SQRT" isEqualToString:operation]){
         result = sqrt([self popOperand]);
-    } else if ([@"AC" isEqualToString:operation]){
+    } else if ([@"C" isEqualToString:operation]){
         result = 0;
         [self.operandStack removeAllObjects];        
+    } else if ([@"sin" isEqualToString:operation]){
+        result = sin([self popOperand]);
+    } else if ([@"cos" isEqualToString:operation]){
+        result = cos([self popOperand]);
     }
     
     [self pushOperand:result];
