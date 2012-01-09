@@ -51,9 +51,11 @@
     } else if ([@"*" isEqualToString:operation]){
         result = [self popOperand] * [self popOperand];
     } else if ([@"/" isEqualToString:operation]){
-        result = [self popOperand] / [self popOperand];
+        double divisor = [self popOperand];
+        if (divisor) result = [self popOperand] / divisor;
     } else if ([@"-" isEqualToString:operation]){
-        result = [self popOperand] - [self  popOperand];
+        double subtrahend = [self popOperand];
+        if (subtrahend) result = [self popOperand] - subtrahend;
     } else if ([@"Pi" isEqualToString:operation]){
         result = 3.1415926535897932384626433832795028841971693993751058209749;
     } else if ([@"SQRT" isEqualToString:operation]){
