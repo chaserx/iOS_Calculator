@@ -71,6 +71,12 @@
         result = sin([self popOperand]);
     } else if ([@"cos" isEqualToString:operation]){
         result = cos([self popOperand]);
+    } else if ([@"1/x" isEqualToString:operation]){
+        double denominator = [self popOperand];
+        if(denominator != 0){
+            result = (1/denominator);
+        }
+            
     }
     
     [self pushOperand:result];
