@@ -60,9 +60,9 @@
     } else if ([@"-" isEqualToString:operation]){
         double subtrahend = [self popOperand];
         if (subtrahend) result = [self popOperand] - subtrahend;
-    } else if ([@"Pi" isEqualToString:operation]){
+    } else if ([@"π" isEqualToString:operation]){
         result = 3.1415926535897932384626433832795028841971693993751058209749;
-    } else if ([@"SQRT" isEqualToString:operation]){
+    } else if ([@"sqrt" isEqualToString:operation]){
         result = sqrt([self popOperand]);
     } else if ([@"C" isEqualToString:operation]){
         result = 0;
@@ -77,10 +77,20 @@
             result = (1/denominator);
         }
             
+    } else if ([@"x^2" isEqualToString:operation]){
+        result = exp2([self popOperand]);
     }
     
     [self pushOperand:result];
     return result;
+}
+
+- (NSString *)operands{
+    return [self.operandStack componentsJoinedByString:@" "];
+}
+
+- (void)backspace{
+    [self popOperand];
 }
 
 @end

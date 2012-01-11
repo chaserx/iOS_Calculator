@@ -18,6 +18,7 @@
 @implementation CalculatorViewController
 
 @synthesize display = _display;
+@synthesize history = _history;
 
 @synthesize brain = _brain;
 @synthesize userAddedDecimalPoint = _userAddedDecimalPoint;
@@ -30,6 +31,13 @@
 }
 
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
+
+
+- (void)logToHistory
+{
+    // self.history.text = @"I don't know how";
+    self.history.text = [[self brain] operands];
+}
 
 - (IBAction)decimalPressed:(UIButton *)sender 
 {
@@ -53,14 +61,14 @@
     // send to log if you want. helpful debug tip.
     // NSLog(@"digit pressed = %@", digit);
 }
-
-    
+   
 
 - (IBAction)enterPressed 
 {
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userAddedDecimalPoint = NO;
+    [self logToHistory];
 }
 
 
@@ -78,8 +86,13 @@
 {
     // this resets the display to 0, but doesn't clear the array
     self.userIsInTheMiddleOfEnteringANumber = NO;
+    [self logToHistory];
 }
 
+
+- (IBAction)removeLastOperand:(id)sender {
+    [[self brain] backspace];
+}
 
 
 
@@ -104,6 +117,7 @@
 {
     [self setDisplay:nil];
     
+    [self setHistory:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
